@@ -1,17 +1,40 @@
 var myParagraph;
+let button;
+let dragX, dragY, moveX, moveY;
 
 function setup() {
+  
+   button = createButton('click me')
+   button.position (100,100);
+   button.mousePressed(c);
+   
+
   myParagraph = createP("html");
   myParagraph.position(0, 0);
   myParagraph.mouseClicked(makeRed);
 }
 
 function draw() {
-  myParagraph.position(frameCount % 200, 0);
+
+  myParagraph.position(dragX, dragY, 0, 0);
+  myParagraph.position(moveX, moveY, 0, 0)
+}
+
+function mouseMoved() {   // Move gray circle
+   moveX = mouseX;
+   moveY = mouseY;
+}
+
+function mouseDragged() { // Move black circle
+   dragX = mouseX;
+   dragY = mouseY;
 }
 
 function makeRed() {
   myParagraph.style("color", "red");
+}
+
+function change
 }
 
 /*
@@ -27,15 +50,20 @@ Some Questions:
 Some Things to Try:
 0. Make the text follow the mouse pointer
 1. Make a button
+
 2. Make the button affect the style or position of some text
 3. Make a picture that shows up on the page. Does it have to
    be created in p5 or can you just place it in the HTML?
    What's the difference?
+
 4. Can you make the position of the image change when the
    button is pressed?
+
 5. Make a slider and have it change the text size
+
 6. Add some CSS in style.css to make the slider huge and
    rotated 30 degrees
+
 6. "hide" the text when the image is double-clicked
    
 */
